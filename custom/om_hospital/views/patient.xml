@@ -8,6 +8,10 @@
             <field name="model">hospital.patient</field>
             <field name="arch" type="xml">
                 <form>
+                    <header>
+                        <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
+<!--                        statusbar_visible="draft,done,confirm"-->
+                    </header>
                     <sheet>
                         <h1>
                             PATIENT PROFILE:
@@ -29,6 +33,11 @@
 
 
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
                 </form>
             </field>
         </record>
@@ -44,6 +53,7 @@
                     <field name="age"/>
                     <field name="gender"/>
                     <field name="note"/>
+                    <field name="state"/>
                 </tree>
             </field>
         </record>
@@ -94,10 +104,12 @@
                                 <ul>
 
                                     <li>
-                                        Gender: <field name="gender"/>
+                                        Gender:
+                                        <field name="gender"/>
                                     </li>
                                     <li>
-                                        Age: <field name="age"/>
+                                        Age:
+                                        <field name="age"/>
                                     </li>
                                 </ul>
                             </div>
