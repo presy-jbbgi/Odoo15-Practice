@@ -20,7 +20,7 @@
 
                         <!--                        <field name="state" widget="statusbar" statusbar_visible="draft,done,confirm"/>-->
                         <field name='state' widget="statusbar" attrs="{'invisible': [('state', 'in', ('cancel'))]}"/>
-<!--                        <field name="state" widget="statusbar" statusbar_visible=""/>-->
+                        <!--                        <field name="state" widget="statusbar" statusbar_visible=""/>-->
                         <!--widget="statusbar"
                         statusbar_visible="draft,done,confirm"
                         options="{'clickable': '1'}"-->
@@ -35,6 +35,7 @@
                                 <separator string="General Info"/>
                                 <field name="name"/>
                                 <field name="age"/>
+                                <field name="responsible_id"/>
                                 <field name="gender"/>
                             </group>
                             <group>
@@ -64,6 +65,8 @@
                     <field name="name"/>
                     <field name="age"/>
                     <field name="gender"/>
+                    <field name="responsible_id"/>
+
                     <field name="note"/>
                     <field name="state"/>
                 </tree>
@@ -103,6 +106,8 @@
                 <kanban>
                     <field name="id"/>
                     <field name="name"/>
+                    <field name="responsible_id"/>
+
                     <field name="gender"/>
                     <field name="age"/>
                     <templates>
