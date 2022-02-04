@@ -9,8 +9,21 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
-<!--                        statusbar_visible="draft,done,confirm"-->
+                        <button name="to_confirm" string="Confirm" type="object" states="draft"
+                                class="btn-primary"/>
+                        <button name="to_done" string="Mark as Done" type="object" states="confirm"
+                                class="btn-primary"/>
+                        <button name="to_cancel" string="Cancel" type="object" states="draft,confirm,done"
+                                class="btn-primary"/>
+                        <button name="to_draft" string="Set to Draft" type="object" states="confirm,cancel,done"
+                                class="btn-secondary"/>
+
+                        <!--                        <field name="state" widget="statusbar" statusbar_visible="draft,done,confirm"/>-->
+                        <field name='state' widget="statusbar" attrs="{'invisible': [('state', 'in', ('cancel'))]}"/>
+<!--                        <field name="state" widget="statusbar" statusbar_visible=""/>-->
+                        <!--widget="statusbar"
+                        statusbar_visible="draft,done,confirm"
+                        options="{'clickable': '1'}"-->
                     </header>
                     <sheet>
                         <h1>
@@ -30,7 +43,6 @@
                                 <field name="note"/>
                             </group>
                         </group>
-
 
                     </sheet>
                     <div class="oe_chatter">

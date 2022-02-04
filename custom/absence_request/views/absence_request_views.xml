@@ -82,7 +82,7 @@
                         <group>
                             <button name="to_confirm" string="Confirm" type="object" states="draft"
                                     class="btn-primary"/>
-                            <button name="to_reject" string="Reject" type="object" states="draft" class="btn-primary"/>
+                            <button name="to_reject" string="Reject" type="object" states="rejected" class="btn-primary"/>
                             <button name="to_draft" string="Reset" type="object" states="confirmed,rejected"
                                     class="btn-primary"/>
 
