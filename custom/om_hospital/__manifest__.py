@@ -30,6 +30,7 @@
         'views/views.xml',
         'views/patient.xml',
         'views/sale.xml',
+        'views/data.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

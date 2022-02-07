@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 
 
 class HospitalPatient(models.Model):
@@ -9,6 +9,7 @@ class HospitalPatient(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string="Name", required=True)
+    reference_id = fields.Char(string="Reference ID", readonly=True, default=lambda self: _('New Patient'), required=True)
     age = fields.Integer(string="Age", tracking=True)
     gender = fields.Selection(
         [('male', 'Male'), ('female', 'Female'), ], required=True, default='male'
@@ -38,8 +39,16 @@ class HospitalPatient(models.Model):
         # self.state = 'confirmed'
         self.write({'state': 'draft'})
 
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         for record in self:
-#             record.value2 = float(record.value) / 100
+    #
+    @api.model
+    def create(self, vals):
+        print("Successfully overridden Create method.")
+        if not vals.get('note'):
+            vals['note'] = 'New Patient'
+        if vals.get('reference_id', _('New Patient')) == _('New Patient'):
+            vals['reference_id'] = self.env['ir.sequence'].next_by_code('hospital.patient') or _('New Patient')
+        res = super(HospitalPatient, self).create(vals)
+        print("res", res)
+        print("vals", vals)
+
+        return res
