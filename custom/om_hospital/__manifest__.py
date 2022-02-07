@@ -29,6 +29,8 @@
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/patient.xml',
+        'views/appointment.xml',
+        'views/kids.xml',
         'views/sale.xml',
         'views/data.xml',
     ],

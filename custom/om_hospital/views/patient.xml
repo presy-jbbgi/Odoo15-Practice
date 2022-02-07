@@ -9,13 +9,16 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <button name="to_confirm" string="Confirm" type="object" states="draft"
+                        <button name="to_confirm" string="Confirm" type="object" states="draft" confirm="Are you sure?"
                                 class="btn-primary"/>
-                        <button name="to_done" string="Mark as Done" type="object" states="confirm"
+                        <button name="to_done" string="Mark as Done" confirm="Are you sure?" type="object"
+                                states="confirm"
                                 class="btn-primary"/>
-                        <button name="to_cancel" string="Cancel" type="object" states="draft,confirm,done"
+                        <button name="to_cancel" string="Cancel" confirm="Are you sure?" type="object"
+                                states="draft,confirm,done"
                                 class="btn-primary"/>
-                        <button name="to_draft" string="Set to Draft" type="object" states="confirm,cancel,done"
+                        <button name="to_draft" string="Set to Draft" confirm="Are you sure?" type="object"
+                                states="confirm,cancel,done"
                                 class="btn-secondary"/>
 
                         <field name="state" widget="statusbar" statusbar_visible="draft,done,confirm"/>
@@ -90,11 +93,15 @@
                     <filter string="Female" name="female" domain="[('gender', '=', 'female')]"/>
 
                     <!--                    group by-->
-                    <group expand="1" string="Group By" colspan="4">
-                        <filter string="Gender" name="gender" domain="[]"
-                                context="{'group_by':'gender'}"/>
-                        <filter string="Age" name="age" domain="[]" context="{'group_by':'age'}"/>
-                    </group>
+                    <!--                    <group expand="1" string="Group By" colspan="4">-->
+                    <!--                        <filter string="Gender" name="gender" domain="[]"-->
+                    <!--                        />-->
+                    <!--                        <filter string="Age" name="age" domain="[]"/>-->
+                    <!--                        &lt;!&ndash;                        default group by&ndash;&gt;-->
+                    <!--                        &lt;!&ndash;                        <filter string="Gender" name="gender" domain="[]"&ndash;&gt;-->
+                    <!--                        &lt;!&ndash;                                context="{'group_by':'gender'}"/>&ndash;&gt;-->
+                    <!--                        &lt;!&ndash;                        <filter string="Age" name="age" domain="[]" context="{'group_by':'age'}"/>&ndash;&gt;-->
+                    <!--                    </group>-->
                 </search>
             </field>
         </record>
@@ -159,6 +166,10 @@
             <field name="res_model">hospital.patient</field>
             <field name="type">ir.actions.act_window</field>
             <field name="view_mode">tree,form,search,kanban</field>
+            <!--                        default group by/filter-->
+
+            <!--            <field name="context">{'search_default_gender': 1, 'search_default_age': 1, }</field>-->
+            <!--            <field name="context">{'search_default_male': 1,}</field>-->
         </record>
 
 

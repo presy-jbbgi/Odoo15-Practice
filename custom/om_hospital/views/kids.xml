@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+<!--        <record model="ir.ui.view" id="patient_tree_view">-->
+<!--            <field name="name">hospital.patient.tree</field>-->
+<!--            <field name="model">hospital.patient</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <tree>-->
+<!--                    <field name="reference_id"/>-->
+<!--                    <field name="name"/>-->
+<!--                    <field name="age"/>-->
+<!--                    <field name="gender"/>-->
+<!--                    <field name="responsible_id"/>-->
+
+<!--                    <field name="note"/>-->
+<!--                    <field name="state"/>-->
+<!--                </tree>-->
+<!--            </field>-->
+<!--        </record>-->
+
+        <record model="ir.actions.act_window" id="kids_action">
+            <field name="name">Kids</field>
+            <field name="res_model">hospital.patient</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="domain">[('age', '&lt;=', 18 )]</field>
+<!--            <field name="view_mode">tree,form,search,kanban</field>-->
+            <!--                        default group by/filter-->
+
+<!--            <field name="context">{'search_default_gender': 1, 'search_default_age': 1, }</field>-->
+            <!--            <field name="context">{'search_default_male': 1,}</field>-->
+        </record>
+
+
+        <menuitem name="Kids" id="hospital_kids" parent="hospital_patient_root" action="kids_action"
+                  sequence="20"
+        />
+
+    </data>
+</odoo>
