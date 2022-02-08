@@ -59,8 +59,8 @@
         <!--  tree view  -->
 
         <record model="ir.ui.view" id="patient_tree_view">
-            <field name="name">hospital.patient.tree</field>
-            <field name="model">hospital.patient</field>
+            <field name="name">hospital.appointment.tree</field>
+            <field name="model">hospital.appointment</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
@@ -120,7 +120,7 @@
 
 
         <menuitem name="Patients Appointment" id="hospital_appointment" parent="hospital_patient_root" action="patient_appointment_action"
-                  sequence="10"
+                  sequence="20"
         />
 
     </data>
